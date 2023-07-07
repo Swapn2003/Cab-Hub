@@ -1,0 +1,15 @@
+#mapbox-directions-origin-input > div > input[type=text]{
+    display: none;
+}
+
+#mapbox-directions-destination-input > div > input[type=text]{
+    display: none;
+}
+
+#map > div.mapboxgl-control-container > div.mapboxgl-ctrl-top-left > div > div.directions-control.directions-control-inputs > div > div.mapbox-directions-profile.mapbox-directions-component-keyline.mapbox-directions-clearfix{
+    display: none;
+}
+
+#map > div.mapboxgl-control-container > div.mapboxgl-ctrl-top-left > div{
+    display: none;
+}
