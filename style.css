@@ -9,6 +9,7 @@
 body{
     background: linear-gradient(45deg,#8e9eab,#eef2f3);
     height: 100vh;
+    overflow: hidden;
 }
 
 .container{
