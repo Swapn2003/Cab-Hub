@@ -40,7 +40,7 @@ async function autoScroll(page) {
 
 async function scrapeHeader(data) {
   const browser = await puppeteer.launch({
-          headless: false,
+          headless: true,
           // executablePath:"C:\Program Files (x86)\Google\Chrome\Application.exe",
           args : ['--window-size= 1800,1800']
 
@@ -56,18 +56,15 @@ async function scrapeHeader(data) {
   await page.evaluate(async() => {
     const suggestion =  document.querySelector("#main > section:nth-child(3) > div > div.css-ofGld > div > div > div.css-hSmneJ > div > div.css-bwbuAu > ul>li")
     await suggestion.click();
-    // await keyboard.press("Enter");
     return suggestion.innerHTML;
     
   })
   
 }catch(err){
-  console.log("Location Accurately Taken");
+  console.log("Location Accurately Taken-1");
 }
 
-// console.log(iML)
-// await page.click("#main > section:nth-child(3) > div > div.css-ofGld > div > div > div.css-hSmneJ > div > div.css-bwbuAu > ul > li:nth-child(0)");
-// await page.click("#main > section:nth-child(3) > div > div.css-ofGld > div > div > div.css-hSmneJ > div > div.css-hPnljU > h2");
+
 await new Promise((resolve) => setTimeout(resolve, 2000));
     // await autoScroll(page);
 
@@ -85,7 +82,7 @@ try{
     })
 
 }catch(err){
-    console.log("Location Accurately Taken");
+    console.log("Location Accurately Taken-2");
 }
 
   await page.waitForSelector('#main > section:nth-child(3) > div > div.css-ofGld > div > div > div.css-hSmneJ > div > div.css-cRgunC > div.pe-products.css-hGSsIm > div.pe-products-item.css-cSaIFq > div.text-area.css-kutmsD');
@@ -119,30 +116,10 @@ try{
     
     return Uber;
   })
-  // const GoIntercity = await page.evaluate(()=>{
-  //   let GoIntercity = document.querySelector('#main > section:nth-child(3) > div > div.css-ofGld > div > div > div.css-hSmneJ > div > div.css-cRgunC > div.pe-products.css-hGSsIm > div:nth-child(2) > div.text-area.css-kutmsD > div').innerText;
-  //   GoIntercity=GoIntercity.replace(/\n/g," ");
-  //   return GoIntercity;
-  // })
-  // const Intercity = await page.evaluate(()=>{
-  //   let Intercity = document.querySelector('#main > section:nth-child(3) > div > div.css-ofGld > div > div > div.css-hSmneJ > div > div.css-cRgunC > div.pe-products.css-hGSsIm > div:nth-child(3) > div.text-area.css-kutmsD > div').innerText;
-  //   Intercity=Intercity.replace(/\n/g," ");
-  //   return Intercity;
-  // })
-
-  // console.log("UberGo : ",UberGo);
-  // console.log("GoIntercity : ",GoIntercity);
-  // console.log("Intercity : ",Intercity);
-  //await page.screenshot({ path: "uberHomePage.png", fullPage: true });  
+    
   await browser.close();
-  // return { "Uber Go": UberGo, "Go Intercity" :GoIntercity, "Intercity" :Intercity};
   return Uber;
-  // await page.click("#main > section:nth-child(3) > div > div.css-ofGld > div > div > div.css-hSmneJ > div > div.css-hPnljU > h2");
-  // await page.click("#main > section:nth-child(3) > div > div.css-ofGld > div > div > div.css-hSmneJ > div > div.css-bwbuAu > div.css-TbLiS > ul > li(0)");
-
-  // await page.click("#main > section:nth-child(3) > div > div.css-ofGld > div > div > div.css-hSmneJ > div > div.css-cVMRri > div > div:nth-child(1) > a");
-
-
+  
 }
 
 // POST request for '/submit' endpoint
