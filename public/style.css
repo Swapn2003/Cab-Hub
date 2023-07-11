@@ -13,17 +13,17 @@ body {
 }
 
 .container {
-    height: 90vh;
+    height: 97vh;
     width: 90vw;
     display: flex;
     border-radius: 20px;
-    margin: 20px auto;
+    margin: 5px auto;
     box-shadow: 3px 3px 3px black;
 }
 
 /* ------------------------------------------------Left-Pannel-------------------------------------------------- */
 .control-pannel {
-    flex: 0.3;
+    flex: 0.4;
     display: flex;
     flex-direction: column;
     background-color: #eef2f3;
@@ -142,31 +142,33 @@ hr {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin: 4px 2px;
+    margin: 2px 2px;
+    overflow-y: scroll;
 }
 
 .cab-fares div {
-    margin: 2px 2px;
+    margin: 0px 2px;
+    margin-bottom: 3px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .cab-fares div h5 {
-    flex-basis: 30%;
+    flex-basis: 40%;
     font-size: 16px;
     font-weight: 600;
 }
 
 .cab-fares div p {
-    flex: 1;
+    flex-basis: 25%;
     font-size: 16px;
     font-weight: 600;
     text-align: center;
 }
 
 .cab-fares div button{
-    flex-basis: 30%;
+    flex-basis: 40%;
     font-size: 14px;
     font-weight: 600;
     display: block;
@@ -190,7 +192,7 @@ hr {
 
 /* --------------------------------------------------------------------Map-Area------------------------------------------------------ */
 .map-area {
-    flex: 0.7;
+    flex: 0.6;
     display: flex;
     flex-direction: column;
 }
