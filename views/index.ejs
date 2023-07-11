@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Wix+Madefor+Text&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -44,21 +44,20 @@
             <div class="travel-modes">
                 <button class="modes active" id="bike" onclick="searchLocation('bike')"><i
                         class="fa-solid fa-motorcycle"></i></button>
-                <button class="modes" id="Taxi" onclick="searchLocation('Taxi')"><i class="fa-solid fa-car-side"></i></button>
+                <button class="modes" id="Taxi" onclick="searchLocation('Taxi')"><i
+                        class="fa-solid fa-car-side"></i></button>
                 <button class="modes" id="SUV" onclick="searchLocation('SUV')"><i
                         class="fa-solid fa-van-shuttle"></i></button>
             </div>
-
-            <div class="cab-fares">
-
-            </div>
+            <hr style="width:100%; margin: 2px auto;">
+            <div class="cab-fares"></div>
         </div>
         <div class="map-area">
             <div id='map'></div>
         </div>
     </div>
 
-    <script src="./map.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
