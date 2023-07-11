@@ -52,14 +52,19 @@ function searchLocation(modeId) {
                         result.forEach(info=>{
                             let fare=document.createElement('div');
                             if(modeId==='bike'){
-                                fare.style.display='none';
+                                if(info.name.includes('Moto')==false){
+                                    fare.style.display='none';
+                                }
+                                else{
+                                    fare.style.display='flex';
+                                }
                             }
                             else if(modeId==='Taxi'){
                                 if(info.name.includes('XL')==true){
                                     fare.style.display='none';
                                 }
                                 else{
-                                    fare.style.display='';
+                                    fare.style.display='flex';
                                 }
                             }
                             else{
@@ -67,7 +72,7 @@ function searchLocation(modeId) {
                                     fare.style.display='none';
                                 }
                                 else{
-                                    fare.style.display='';
+                                    fare.style.display='flex';
                                 }
                             }
                             let cab=document.createElement('h5');
