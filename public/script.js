@@ -51,6 +51,25 @@ function searchLocation(modeId) {
                         // Handle the response result
                         result.forEach(info=>{
                             let fare=document.createElement('div');
+                            if(modeId==='bike'){
+                                fare.style.display='none';
+                            }
+                            else if(modeId==='Taxi'){
+                                if(info.name.includes('XL')==true){
+                                    fare.style.display='none';
+                                }
+                                else{
+                                    fare.style.display='';
+                                }
+                            }
+                            else{
+                                if(info.name.includes('XL')==false){
+                                    fare.style.display='none';
+                                }
+                                else{
+                                    fare.style.display='';
+                                }
+                            }
                             let cab=document.createElement('h5');
                             let price=document.createElement('p');
                             let book=document.createElement('button');
@@ -65,6 +84,21 @@ function searchLocation(modeId) {
                             fare.appendChild(book);
                             cabFares.appendChild(fare);
                         });
+                        let isEmpty=true;
+                        cabFares.querySelectorAll('div').forEach(x =>{
+                            if(x.style.display!='none'){
+                                isEmpty=false;
+                            }
+                        })
+                        if(isEmpty){
+                            let emptymsg=document.createElement('p');
+                            emptymsg.innerText=`No ${modeId} available now !`
+                            emptymsg.style.textAlign='center';
+                            emptymsg.style.margin='30px auto';
+                            emptymsg.style.fontSize='18px';
+                            emptymsg.style.fontWeight='600';
+                            cabFares.appendChild(emptymsg);
+                        }
                         console.log(result);
                         })
                         .catch(error => {

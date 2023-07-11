@@ -17,7 +17,7 @@ body {
     width: 90vw;
     display: flex;
     border-radius: 20px;
-    margin: 5px auto;
+    margin: 20px auto;
     box-shadow: 3px 3px 3px black;
 }
 
@@ -141,9 +141,9 @@ hr {
 .cab-fares {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     margin: 2px 2px;
-    overflow-y: scroll;
+    overflow: auto;
 }
 
 .cab-fares div {
@@ -158,6 +158,8 @@ hr {
     flex-basis: 40%;
     font-size: 16px;
     font-weight: 600;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
 }
 
 .cab-fares div p {
@@ -165,6 +167,8 @@ hr {
     font-size: 16px;
     font-weight: 600;
     text-align: center;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
 }
 
 .cab-fares div button{

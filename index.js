@@ -40,7 +40,7 @@ async function autoScroll(page) {
 
 async function scrapeHeader(data) {
   const browser = await puppeteer.launch({
-          headless: true,
+          headless: false,
           // executablePath:"C:\Program Files (x86)\Google\Chrome\Application.exe",
           args : ['--window-size= 1800,1800']
 
@@ -66,7 +66,7 @@ async function scrapeHeader(data) {
 
 
 await new Promise((resolve) => setTimeout(resolve, 2000));
-    // await autoScroll(page);
+    await autoScroll(page);
 
   const drop_input = await page.waitForSelector('#main > section:nth-child(3) > div > div.css-ofGld > div > div > div.css-hSmneJ > div > div.css-bwbuAu > div.css-TbLiS > div > input');
   await drop_input.type(data.destinationPlaceName)
