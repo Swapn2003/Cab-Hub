@@ -8,7 +8,7 @@ let map = new mapboxgl.Map({
 });
 
 // Adding zoom and rotation controls
-map.addControl(new mapboxgl.NavigationControl(),'bottom-right');
+map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
 // Adding Directions control
 let directions = new MapboxDirections({
@@ -21,9 +21,9 @@ map.addControl(directions, 'top-left');
 let originInput = document.querySelector('#origin');
 let destinationInput = document.querySelector('#destination');
 let cabFares = document.querySelector('.cab-fares');
-
+let data;
 function searchLocation(modeId) {
-    cabFares.innerHTML="";
+    cabFares.innerHTML = "";
     let origin = originInput.value;
     let destination = destinationInput.value;
     directions.setOrigin(origin);
@@ -35,93 +35,97 @@ function searchLocation(modeId) {
             geocodeCoordinates(destinationCoordinates, function (destinationPlaceName) {
                 console.log('Origin:', originPlaceName);
                 console.log('Destination:', destinationPlaceName);
-                const data = {
-                    originPlaceName:originPlaceName,
-                    destinationPlaceName: destinationPlaceName
+                data = {
+                    origincoord: { lat: originCoordinates[1], lng: originCoordinates[0] },
+                    originPlaceName: originPlaceName,
+                    destinationPlaceName: destinationPlaceName,
+                    destinationcoord: { lat: destinationCoordinates[1], lng: destinationCoordinates[0] }
                 };
-                
-                    fetch('http://localhost:5000/Uberprice', {
-                        method: 'POST',
-                        headers: {
+
+                fetch('http://localhost:5000/Uberprice', {
+                    method: 'POST',
+                    headers: {
                         'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                    }).then(response => response.json())
-                        .then(result => {
+                    },
+                    body: JSON.stringify(data)
+                }).then(response => response.json())
+                    .then(result => {
                         // Handle the response result
-                        result.forEach(info=>{
-                            let fare=document.createElement('div');
-                            if(modeId==='bike'){
-                                if(info.name.includes('Moto')==false){
-                                    fare.style.display='none';
+                        result.forEach(info => {
+                            let fare = document.createElement('div');
+                            if (modeId === 'bike') {
+                                if (info.name.includes('Moto') == false) {
+                                    fare.style.display = 'none';
                                 }
-                                else{
-                                    fare.style.display='flex';
-                                }
-                            }
-                            else if(modeId==='Taxi'){
-                                if(info.name.includes('XL')==true){
-                                    fare.style.display='none';
-                                }
-                                else{
-                                    fare.style.display='flex';
+                                else {
+                                    fare.style.display = 'flex';
                                 }
                             }
-                            else{
-                                if(info.name.includes('XL')==false){
-                                    fare.style.display='none';
+                            else if (modeId === 'Taxi') {
+                                if (info.name.includes('XL') == true) {
+                                    fare.style.display = 'none';
                                 }
-                                else{
-                                    fare.style.display='flex';
+                                else {
+                                    fare.style.display = 'flex';
                                 }
                             }
-                            let cab=document.createElement('h5');
-                            let price=document.createElement('p');
-                            let book=document.createElement('button');
-                            book.innerText='Login to book';
-                            book.addEventListener('click',()=>{
-                                window.location.href=info.url;
+                            else {
+                                if (info.name.includes('XL') == false) {
+                                    fare.style.display = 'none';
+                                }
+                                else {
+                                    fare.style.display = 'flex';
+                                }
+                            }
+                            let cab = document.createElement('h5');
+                            let price = document.createElement('p');
+                            let book = document.createElement('button');
+                            book.innerText = 'Login to book';
+                            book.addEventListener('click', () => {
+                                window.location.href = info.url;
                             })
-                            cab.innerText=info.name;
-                            price.innerText=info.fare;
+                            cab.innerText = info.name;
+                            price.innerText = info.fare;
                             fare.appendChild(cab);
                             fare.appendChild(price);
                             fare.appendChild(book);
                             cabFares.appendChild(fare);
                         });
-                        let isEmpty=true;
-                        cabFares.querySelectorAll('div').forEach(x =>{
-                            if(x.style.display!='none'){
-                                isEmpty=false;
+                        let isEmpty = true;
+                        cabFares.querySelectorAll('div').forEach(x => {
+                            if (x.style.display != 'none') {
+                                isEmpty = false;
                             }
                         })
-                        if(isEmpty){
-                            let emptymsg=document.createElement('p');
-                            emptymsg.innerText=`No ${modeId} available now !`
-                            emptymsg.style.textAlign='center';
-                            emptymsg.style.margin='30px auto';
-                            emptymsg.style.fontSize='18px';
-                            emptymsg.style.fontWeight='600';
+                        if (isEmpty) {
+                            let emptymsg = document.createElement('p');
+                            emptymsg.innerText = `No ${modeId} available now !`
+                            emptymsg.style.textAlign = 'center';
+                            emptymsg.style.margin = '30px auto';
+                            emptymsg.style.fontSize = '18px';
+                            emptymsg.style.fontWeight = '600';
                             cabFares.appendChild(emptymsg);
                         }
                         console.log(result);
-                        })
-                        .catch(error => {
+                    })
+                    .catch(error => {
                         // Handle any errors
                         console.error(error);
-                        });
+                    });
+
+                    
             });
         });
     }, 2000);
-    
+
     // ------------------------------------------------UI update------------------------------------------------
-    
-    const modes=document.querySelectorAll('.modes');
-    for(let mode of modes){
+
+    const modes = document.querySelectorAll('.modes');
+    for (let mode of modes) {
         mode.classList.remove('active');
     }
     document.querySelector(`#${modeId}`).classList.add('active');
-    
+
 };
 
 function geocodeCoordinates(coordinates, callback) {
