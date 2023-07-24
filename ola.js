@@ -196,18 +196,6 @@ async function getUserInput() {
   });
 }
 
-// async function getPrice(selector) {
-//   await page.waitForFunction((selector) => {
-//     const element = document.querySelector(selector);
-//     return element && element.innerText.trim().length > 0;
-//   }, {}, selector);
-
-//   const price = await page.evaluate((selector) => {
-//     const element = document.querySelector(selector);
-//     return element.innerText;
-//   }, selector);
-//   return price;
-// }
 
 
 scrapeHeader();
