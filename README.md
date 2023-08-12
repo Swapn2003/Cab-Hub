@@ -7,6 +7,8 @@
 * [Features & Specialities](#key-features--specialities)<br>
 * [Techsacks used, installation, execution](#techstacks)<br>
 * [Snippets of web application](#web-application-snippets)<br>
+* [Contributors](#contributors)<br>
+
 </details>
 
 ## Introduction
@@ -48,3 +50,21 @@ This is a Node.js based web application for the cab fare estimation. It provides
 ### Execution
 
 * Start the server `npm start` or `nodemon server.js`<br>
+
+## Snippets of Web Application
+
+1. Route Search Feature<br>
+
+![route-search](./window-snippets/routesearch.png)<br>
+
+2. Estimating Uber cab Prices for Desired Ride<br>
+
+![uber](./window-snippets/uber.png)<br>
+
+
+## Contributors
+
+* [Maharsh Raval](https://github.com/Maharsh04 "Maharsh Raval")
+* [Swapn Agarwal](https://github.com/Swapn2003 "Swapn Agarwal")
+
+>Happy Coding !!
