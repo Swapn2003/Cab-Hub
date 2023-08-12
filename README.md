@@ -63,7 +63,7 @@ This is a Node.js based web application for the cab fare estimation. It provides
 
 3. Estimating Ola cab Prices for desired Ride on Server-side<br>
 
-![Ola](./window-snippets/ola.png)<br>
+![Ola](./window-snippets/ola.jpg)<br>
 
 
 ## Contributors
